@@ -3,6 +3,8 @@
 *.lo
 *.o
 *.obj
+*.sbr
+*.ilk
 
 # Precompiled Headers
 *.gch
@@ -26,3 +28,12 @@
 *.exe
 *.out
 *.app
+
+# Debug
+*.sdf
+*.opensdf
+*.pdb
+*.bsc
+*.log
+*.tlog
+*.idb
