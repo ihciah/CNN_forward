@@ -10,12 +10,12 @@ int main(){
 	cout << "Initializing CNN-net...";
 	t_before = clock();
 	CnnNet net;
-	net.init("model", "");
+	net.init("test_output", "");
 	cout << "Done. " << clock() - t_before << "ms"<<endl;
-//======
+
 	t_before = clock();
 	cout << "Net forwarding...";
-	net.forward("test.jpg",GRAY);
+	net.forward("6.jpg",GRAY);
 	cout << "Done. " << clock() - t_before << "ms"<<endl;
 
 	t_before = clock();
@@ -25,8 +25,6 @@ int main(){
 	num_to_label_cstring(labels,tmp);
 	cout << tmp << endl;
 	cout << "Done. " << clock() - t_before << "ms" << endl;
-//=====
-
 
 	return 0;
 }

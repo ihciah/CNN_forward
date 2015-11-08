@@ -36,14 +36,14 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120_xp</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -73,10 +73,6 @@
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);D:\Program Files\opencv\build\include;D:\Program Files\tbb\include;</IncludePath>
     <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);D:\Program Files\opencv\build\x64\vc12\staticlib;D:\Program Files\tbb\lib\intel64\vc12</LibraryPath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);D:\Program Files\opencv\build\include;D:\Program Files\tbb\include;C:\Program Files (x86)\Visual Leak Detector\include;</IncludePath>
-    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);D:\Program Files\opencv\build\x64\vc12\staticlib;D:\Program Files\tbb\lib\intel64\vc12;C:\Program Files (x86)\Visual Leak Detector\lib\Win64;</LibraryPath>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -92,12 +88,9 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>tbb.lib;vfw32.lib;comctl32.lib;zlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;libjasper.lib;libjpeg.lib;libpng.lib;libtiff.lib;IlmImf.lib;opencv_core2410.lib;opencv_imgproc2410.lib;opencv_highgui2410.lib;opencv_ml2410.lib;opencv_video2410.lib;opencv_features2d2410.lib;opencv_calib3d2410.lib;opencv_objdetect2410.lib;opencv_contrib2410.lib;opencv_legacy2410.lib;opencv_flann2410.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -118,6 +111,7 @@
       <AdditionalDependencies>tbb.lib;vfw32.lib;comctl32.lib;zlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;libjasper.lib;libjpeg.lib;libpng.lib;libtiff.lib;IlmImf.lib;opencv_core2410.lib;opencv_imgproc2410.lib;opencv_highgui2410.lib;opencv_ml2410.lib;opencv_video2410.lib;opencv_features2d2410.lib;opencv_calib3d2410.lib;opencv_objdetect2410.lib;opencv_contrib2410.lib;opencv_legacy2410.lib;opencv_flann2410.lib</AdditionalDependencies>
       <Profile>true</Profile>
       <SubSystem>Console</SubSystem>
+      <ModuleDefinitionFile>cnn.def</ModuleDefinitionFile>
     </Link>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -140,6 +134,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>tbb.lib;vfw32.lib;comctl32.lib;zlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;libjasper.lib;libjpeg.lib;libpng.lib;libtiff.lib;IlmImf.lib;opencv_core2410.lib;opencv_imgproc2410.lib;opencv_highgui2410.lib;opencv_ml2410.lib;opencv_video2410.lib;opencv_features2d2410.lib;opencv_calib3d2410.lib;opencv_objdetect2410.lib;opencv_contrib2410.lib;opencv_legacy2410.lib;opencv_flann2410.lib</AdditionalDependencies>
       <Profile>true</Profile>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
     </Link>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -147,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="blowfish.h" />
+    <ClInclude Include="captcha.h" />
     <ClInclude Include="CnnAllLayers.h" />
     <ClInclude Include="CnnLayer.h" />
     <ClInclude Include="CnnNet.h" />
@@ -157,19 +154,26 @@
     <ClInclude Include="ModelReader.h" />
     <ClInclude Include="Pooling.h" />
     <ClInclude Include="Relu.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blowfish.cpp" />
+    <ClCompile Include="captcha.cpp" />
     <ClCompile Include="CnnNet.cpp" />
     <ClCompile Include="Conv.cpp" />
     <ClCompile Include="Dense.cpp" />
     <ClCompile Include="Input.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="ModelReader.cpp" />
     <ClCompile Include="Pooling.cpp" />
     <ClCompile Include="Relu.cpp" />
     <ClCompile Include="utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cnn.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CNN_forward.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

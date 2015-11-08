@@ -1,0 +1,4 @@
+LIBRARY CNN_forward.dll
+EXPORTS
+rec @1
+init @2
