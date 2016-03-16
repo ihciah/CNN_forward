@@ -1,3 +1,7 @@
+/*
+Copyright 2015 By ihciah
+https://github.com/ihciah/CNN_forward
+*/
 #pragma once
 #ifndef __Pooling__
 #define __Pooling__

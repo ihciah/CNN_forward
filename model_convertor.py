@@ -1,11 +1,19 @@
+#!/usr/bin/env python
+# coding:utf-8
+#
+# Copyright 2015 By ihciah
+# https://github.com/ihciah/CNN_forward
+#
 import caffe,struct
 import numpy as np
 #from PIL import Image
+
 
 class Convertor:
     def __init__(self,output,net):
         self.output=open(output,"wb+",0)
         self.net=net
+
     def write_data(self,layer_id,layer_name):
         d=self.net.layers[layer_id]
         if d.type=='Convolution':

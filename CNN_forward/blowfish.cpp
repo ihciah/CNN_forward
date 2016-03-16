@@ -1,3 +1,7 @@
+/*
+Copyright 2015 By ihciah
+https://github.com/ihciah/CNN_forward
+*/
 #include "blowfish.h"
 #include <cstring>
 #include <algorithm>

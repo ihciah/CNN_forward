@@ -1,3 +1,7 @@
+/*
+Copyright 2015 By ihciah
+https://github.com/ihciah/CNN_forward
+*/
 #pragma once
 #ifndef __CnnLayer__
 #define __CnnLayer__
