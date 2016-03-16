@@ -1,3 +1,7 @@
+/*
+Copyright 2015 By ihciah
+https://github.com/ihciah/CNN_forward
+*/
 #include"Conv.h"
 #include <opencv2/imgproc/imgproc.hpp>
 #include<iostream>
